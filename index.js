@@ -16,11 +16,11 @@ app.get('/challenges', (req, res) => {
 })
 app.post('/challenges', (req, res) => {
     console.log(req.body);
-    res.send("Post challenge");
+    res.send(req.body);
 })
 
 app.put('/challenges/:id', (req, res) => {
-    
+
 
 })
 

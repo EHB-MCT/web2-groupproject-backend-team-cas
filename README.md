@@ -32,9 +32,9 @@ Takes two numbers and returns the sum.
 **Server:** Node, Express, MongoDB
 
 ## Tools
-[Gitmoji](https://gitmoji.dev/)
-[gitignore.io](https://www.toptal.com/developers/gitignore)
-[readme.so](https://readme.so/)
+[Gitmoji](https://gitmoji.dev/)   
+[gitignore.io](https://www.toptal.com/developers/gitignore)   
+[readme.so](https://readme.so/)   
 ## Side note
 The developing of the project might be streamed on [Twitch](https://www.twitch.tv/ecs0w).
 And shout out to [Mike Derycke's Youtube channel](https://www.youtube.com/c/MikeDerycke/videos).

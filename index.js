@@ -4,10 +4,10 @@ const { MongoClient } = require('mongodb');
 require('dotenv').config()
 
 // create mongo client
-const client = new MongoClient(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+const client = new MongoClient(process.env.MONGO_URL)
 
 const app = express();
-const port = process.env.PORT || 443;
+const port = process.env.PORT || 1337;
 
 app.use(express.static('public'));
 app.use(bodyParser.json());

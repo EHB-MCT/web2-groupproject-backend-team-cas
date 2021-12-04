@@ -10,8 +10,9 @@ const client = new MongoClient(process.env.MONGO_URL)
 
 // create app
 const app = express()
+
 // use port
-const port = process.env.PORT;
+const port = process.env.PORT || 1337;
 
 app.use(express.static('public'));
 app.use(bodyParser.json());

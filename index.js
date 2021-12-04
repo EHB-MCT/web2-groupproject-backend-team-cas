@@ -76,6 +76,46 @@ app.get('/challenge', async (req,res) => {
     }
 });
 
+app.post('/challenges', async (req, res) => {
+    if (!req.body.name || !req.body.course || !req.body.points) {
+        res.status(400).send('Request failed — Missing name, course or points attributed');
+        return;
+    }
+
+    try {
+        await client.connect();
+        const collections = client.db('Session7').collection('challenges');
+        const challenges = await collections.findOne({name: req.body.name, course: req.body.course});
+        
+        if (challenges){
+            res.status(400).send(`Request failed — A challenge with the name ${req.body.name} already exists for the course ${req.body.course}`)
+            return;
+        }
+
+        let newChallenge = {
+            name: req.body.name,
+            course: req.body.course,
+            points: req.body.points
+        }
+
+        if(req.body.session){
+            newChallenge.session = req.body.session;
+        }
+
+        let insertNewChallenge = await collections.insertOne(newChallenge);
+
+        res.status(201).json(newChallenge);
+    } catch(error) {
+        console.log(error);
+        res.status(500).send({
+            error: 'Something went wrong', 
+            value: error
+        });
+    }finally {
+        await client.close();
+    }
+})
+
 
 
 app.listen(port, () => {

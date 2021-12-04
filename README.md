@@ -36,5 +36,5 @@ Takes two numbers and returns the sum.
 [Gitignore.io](https://www.toptal.com/developers/gitignore)   
 [Readme.so](https://readme.so/)   
 ## Side note
-The developing of the project might be streamed on [Twitch](https://www.twitch.tv/ecs0w).
+The developing of the project might be streamed on [Twitch](https://www.twitch.tv/ecs0w).  
 And shout out to [Mike Derycke's Youtube channel](https://www.youtube.com/c/MikeDerycke/videos).

@@ -25,7 +25,7 @@ app.get('/challenges', async ( req, res) => {
         const collection = client.db('Session7').collection('challenges')
         const challenges = await collection.find({}).toArray();
 
-        // send back data with response
+        // send back response with data
         res.status(200).send(challenges);
     } catch(error){
         console.log(error)

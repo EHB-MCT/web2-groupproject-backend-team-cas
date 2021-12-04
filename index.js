@@ -7,7 +7,7 @@ require('dotenv').config()
 const client = new MongoClient(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 
 const app = express();
-const port = process.env.PORT || 1337;
+const port = process.env.PORT || 443;
 
 app.use(express.static('public'));
 app.use(bodyParser.json());

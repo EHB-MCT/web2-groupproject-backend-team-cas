@@ -43,17 +43,19 @@ app.get('/challenges', async ( req, res) => {
 
 // get one challenge
 app.get('/challenge', async (req,res) => {
+    
     //id is located in the query: req.query.id
     try{
         // connect to database
         await client.connect();
 
-        const challenges = client.db('Session7').collection('challenges');
+        const collections= client.db('Session7').collection('challenges');
 
         //only look for a bg with this ID
-        const query = { challengeid: req.query.id };
+        const query = { id: Number(req.query.id) };
+        console.log(query)
 
-        const challenge = await challenges.findOne(query);
+        const challenge = await collections.findOne(query);
 
         if(challenge){
             // send back response with data

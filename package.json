@@ -5,11 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/RhysDevalckeneer/backend.git"
+    "start": "node index.js"
   },
   "keywords": [
     "backend",
@@ -17,10 +13,6 @@
   ],
   "author": "Rhys Devalckeneer",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/RhysDevalckeneer/backend/issues"
-  },
-  "homepage": "https://github.com/RhysDevalckeneer/backend#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "dotenv": "^10.0.0",

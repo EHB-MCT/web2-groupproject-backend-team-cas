@@ -116,6 +116,69 @@ app.post('/challenges', async (req, res) => {
     }
 })
 
+app.put('/challenge', (req, res) => {
+    if (!req.body.name || !req.body.course || !req.body.points) {
+        res.status(400).send('Request failed — Missing name, course or points attributed');
+        return;
+    }
+
+    try {
+
+        const collections = client.db('Session7').collection('challenges');
+        const query = { id: Number(req.query.id) };
+
+        const challenge = await collections.findOne(query);
+
+        let updChallenge = {
+            name: req.body.name,
+            course: req.body.course,
+            points: req.body.points
+        }
+
+        if(req.body.session){
+            newChallenge.session = req.body.session;
+        }
+
+        const updateChallenge = await challenge.updateChallenge(updChallenge)
+
+
+
+    }catch(error) {
+        console.log(error);
+        res.status(500).send({
+            error: 'Something went wrong', 
+            value: error
+        });
+    }finally {
+        await client.close();
+    }
+
+
+})
+
+app.delete('/challenge', (req, res) => {
+
+    try {
+
+        const collections = client.db('Session7').collection('challenges');
+        const query = { id: Number(req.query.id) };
+
+        const challenge = await collections.findOne(query);
+
+
+
+    }catch(error) {
+        console.log(error);
+        res.status(500).send({
+            error: 'Something went wrong', 
+            value: error
+        });
+    }finally {
+        await client.close();
+    }
+    
+});
+
 
 
 app.listen(port, () => {

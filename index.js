@@ -13,6 +13,12 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 
+// CORS error - https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9
+ app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+ });
+
 
 // basic route
 app.get('/', (req, res) => {

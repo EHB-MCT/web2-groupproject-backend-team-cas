@@ -51,7 +51,7 @@ app.get('/challenge', async (req,res) => {
 
         const collections= client.db('Session7').collection('challenges');
 
-        //only look for a bg with this ID
+        //only look for a challenge with this ID
         const query = { id: Number(req.query.id) };
         console.log(query)
 
@@ -75,6 +75,52 @@ app.get('/challenge', async (req,res) => {
         await client.close();
     }
 });
+
+
+app.post('/saveChallenge', async (req, res) =>{
+
+    console.log(req.body);
+    res.send('ok');
+
+    if(!req.body.name || !req.body.points || !req.body.course || !req.body.session || !req.body.id) {
+        req.status(400).send('Bad request: missing name, points, course, session or id');
+        return;
+    }
+
+    try {
+        await client.connect();
+        const collection = client.db('Session7').collection('challenges')
+        
+        const challenge = await collection.findOne( {id: req.body.id} )
+        if(challenge) {
+            res.status(400).send('Bad request: Challenge already exists with that id ' + req.body.id); 
+            return;
+        }
+
+        let newChallenge = {
+            id: req.body.id,
+            name: req.body.name,
+            points: req.body.points,
+            course: req.body.points,
+            session: req.body.session,
+        }
+
+        let insertChallenge = await collection.insertOne(newChallenge);
+
+        res.status(201).send('Challenge succesfully added with id: ' + req.body.id);
+        return;
+        
+    }catch(error){
+        console.log(error);
+        res.status(500).send({
+            error: 'Something went wrong',
+            value: error
+        })
+
+    }finally{
+        await client.close();
+    }
+})
 
 
 

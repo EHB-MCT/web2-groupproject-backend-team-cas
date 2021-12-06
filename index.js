@@ -80,7 +80,6 @@ app.get('/challenge', async (req,res) => {
 app.post('/saveChallenge', async (req, res) =>{
 
     console.log(req.body);
-    res.send('ok');
 
     if(!req.body.name || !req.body.points || !req.body.course || !req.body.session || !req.body.id) {
         req.status(400).send('Bad request: missing name, points, course, session or id');

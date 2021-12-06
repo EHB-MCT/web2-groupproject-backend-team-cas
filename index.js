@@ -112,7 +112,7 @@ app.post('/saveChallenge', async (req, res) =>{
 
         let insertChallenge = await collection.insertOne(newChallenge);
 
-        res.status(201).send('Challenge succesfully added with id: ' + req.body.id);
+        res.status(201).send(newChallenge);
         return;
         
     }catch(error){
